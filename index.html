@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07060a">
+<meta name="description" content="یک تجربه دیجیتال عاشقانه — از محمدرضا، برای بیتا">
+<title>برای بیتا ❤</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-mood="intro">
+
+  <!-- لایه‌های محیطی -->
+  <div id="ambient" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- نوار پیشرفت داستان -->
+  <div id="progress" aria-hidden="true"><span id="progress-fill"></span></div>
+
+  <main id="stage">
+
+    <!-- ═══════════ سکانس ۱: شروع سینمایی ═══════════ -->
+    <section class="scene is-active" id="scene-intro" aria-label="شروع">
+      <div class="scene-inner">
+        <div class="intro-star" aria-hidden="true">
+          <span class="halo"></span>
+          <span class="core"></span>
+        </div>
+        <div class="intro-lines">
+          <p class="line type" id="intro-line1"></p>
+          <p class="line type" id="intro-line2"></p>
+        </div>
+        <button class="btn btn-primary" id="btn-start">
+          <span class="btn-shine" aria-hidden="true"></span>
+          <span class="btn-text">بیا با هم شروع کنیم</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۲: دنیای مخصوص بیتا ═══════════ -->
+    <section class="scene" id="scene-name" aria-label="دنیای بیتا">
+      <div class="scene-inner">
+        <div class="name-orbit" aria-hidden="true">
+          <div class="tilt">
+            <span class="ring ring-a"></span>
+            <span class="ring ring-b"></span>
+            <span class="sqw" style="--px:92%; --t:8s;  --d:0s"><i class="sq"></i></span>
+            <span class="sqw" style="--px:97%; --t:12s; --d:-4s"><i class="sq s-pink"></i></span>
+            <span class="sqw" style="--px:85%; --t:10s; --d:-7s"><i class="sq s-gold"></i></span>
+            <span class="sqw" style="--px:100%; --t:15s; --d:-2s"><i class="sq s-violet"></i></span>
+          </div>
+        </div>
+        <h1 class="bita-name" id="bita-name">بیتا</h1>
+        <p class="name-line" data-seq="1">می‌دونی چرا این سایت رو ساختم؟</p>
+        <p class="name-line" data-seq="2">چون بعضی حس‌ها توی یه پیام ساده جا نمی‌شن.</p>
+        <p class="name-line" data-seq="3">و تو برای من، یه آدم معمولی نیستی.</p>
+        <button class="btn btn-ghost" data-next><span class="btn-text">ادامه</span></button>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۳: قلب دیجیتال زنده ═══════════ -->
+    <section class="scene" id="scene-heart" aria-label="قلب دیجیتال">
+      <div class="scene-inner">
+        <div class="heart-stage" id="heart-stage">
+          <canvas id="heart-canvas" aria-hidden="true"></canvas>
+          <div class="heart-rings" aria-hidden="true"><span class="hr hr-a"></span><span class="hr hr-b"></span></div>
+          <div class="heart-core" id="heart-core" role="button" tabindex="0" aria-label="قلب زنده — لمس کن">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <defs>
+                <radialGradient id="hg" cx="50%" cy="38%" r="75%">
+                  <stop offset="0%" stop-color="#ff7ba6"/>
+                  <stop offset="45%" stop-color="#e0263f"/>
+                  <stop offset="100%" stop-color="#6d0a24"/>
+                </radialGradient>
+                <linearGradient id="hs" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(255,255,255,.85)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                </linearGradient>
+              </defs>
+              <path class="hp hp-glow2" d="M50 88 C42 79 14 59 8 39 C3 22 14 9 29 9 C39 9 47 15 50 24 C53 15 61 9 71 9 C86 9 97 22 92 39 C86 59 58 79 50 88 Z"/>
+              <path class="hp hp-glow1" d="M50 88 C42 79 14 59 8 39 C3 22 14 9 29 9 C39 9 47 15 50 24 C53 15 61 9 71 9 C86 9 97 22 92 39 C86 59 58 79 50 88 Z"/>
+              <path class="hp hp-main" fill="url(#hg)" d="M50 88 C42 79 14 59 8 39 C3 22 14 9 29 9 C39 9 47 15 50 24 C53 15 61 9 71 9 C86 9 97 22 92 39 C86 59 58 79 50 88 Z"/>
+              <ellipse class="hp-shine" cx="36" cy="30" rx="16" ry="10" fill="url(#hs)" opacity=".5" transform="rotate(-18 36 30)"/>
+            </svg>
+            <span class="heart-wave" id="heart-wave" aria-hidden="true"></span>
+          </div>
+        </div>
+        <p class="heart-line" id="heart-line1">اگه می‌تونستم احساسم رو به شکل یه تصویر نشونت بدم، شاید شبیه این بود...</p>
+        <p class="heart-line" id="heart-line2">ولی هیچ تصویری نمی‌تونه تمام چیزی رو که توی دلمه نشون بده.</p>
+        <button class="btn btn-ghost" data-next><span class="btn-text">ادامه</span></button>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۴: آلبوم بیتا ═══════════ -->
+    <section class="scene" id="scene-album" aria-label="آلبوم عکس بیتا">
+      <div class="scene-inner album-inner">
+
+        <div class="book-wrap">
+          <div class="book" id="book">
+            <div class="book-board" aria-hidden="true"></div>
+            <div class="book-spine" aria-hidden="true"></div>
+            <div class="book-edges" aria-hidden="true"></div>
+
+            <!-- صفحه زیرین -->
+            <div class="page-base">
+              <figure class="paper" id="fig-base">
+                <div class="ph">
+                  <img id="img-base" src="img/bita1.jpg" alt="بیتا — قاب ۱" decoding="async">
+                  <div class="miss"><span>این قاب هنوز اینجا نیست...<br>اما جاش توی قلبمه ❤</span></div>
+                </div>
+                <figcaption id="cap-base"></figcaption>
+              </figure>
+            </div>
+
+            <!-- برگ در حال ورق خوردن -->
+            <div class="leaf no-trans" id="leaf">
+              <div class="leaf-face leaf-front">
+                <figure class="paper" id="fig-front">
+                  <div class="ph">
+                    <img id="img-front" src="img/bita1.jpg" alt="" decoding="async">
+                    <div class="miss"><span>این قاب هنوز اینجا نیست...<br>اما جاش توی قلبمه ❤</span></div>
+                  </div>
+                  <figcaption id="cap-front"></figcaption>
+                </figure>
+              </div>
+              <div class="leaf-face leaf-back">
+                <figure class="paper" id="fig-back">
+                  <div class="ph">
+                    <img id="img-back" src="img/bita2.jpg" alt="" decoding="async">
+                    <div class="miss"><span>این قاب هنوز اینجا نیست...<br>اما جاش توی قلبمه ❤</span></div>
+                  </div>
+                  <figcaption id="cap-back"></figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <!-- جلد -->
+            <div class="book-cover" id="book-cover" role="button" tabindex="0" aria-label="باز کردن آلبوم">
+              <div class="cover-face cover-front">
+                <span class="cover-frame" aria-hidden="true"></span>
+                <svg class="cover-heart" viewBox="0 0 100 100" aria-hidden="true">
+                  <path fill="currentColor" d="M50 88 C42 79 14 59 8 39 C3 22 14 9 29 9 C39 9 47 15 50 24 C53 15 61 9 71 9 C86 9 97 22 92 39 C86 59 58 79 50 88 Z"/>
+                </svg>
+                <h2 class="cover-title">برای بیتا، با تمام قلبم</h2>
+                <p class="cover-sub">پنج قاب از دنیای تو</p>
+                <span class="cover-hint">برای باز کردن، لمس کن</span>
+              </div>
+              <div class="cover-face cover-backface" aria-hidden="true">
+                <span class="cover-frame"></span>
+                <span class="inner-mark">ب&nbsp;❤&nbsp;م</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="album-ui" id="album-ui">
+          <div class="album-counter"><b id="album-num">۱</b><span>از ۵</span></div>
+          <div class="album-dots" id="album-dots" aria-hidden="true"></div>
+          <div class="album-btns">
+            <button class="btn btn-mini" id="btn-prev" aria-label="عکس قبلی">
+              <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="btn-text">قبلی</span>
+            </button>
+            <button class="btn btn-mini" id="btn-next" aria-label="عکس بعدی">
+              <span class="btn-text">بعدی</span>
+              <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="album-tip">روی عکس بزن تا بزرگ‌تر ببینیش</p>
+        </div>
+
+        <button class="btn btn-ghost" id="btn-after-album" data-next><span class="btn-text">برو به ادامه داستان</span></button>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۵: روایت عشق ═══════════ -->
+    <section class="scene" id="scene-story" aria-label="روایت عشق">
+      <div class="scene-scroll" id="story-scroll">
+        <div class="story-glow" aria-hidden="true"></div>
+
+        <article class="story-panel">
+          <p class="story-line">دوست داشتنت برای من فقط گفتن یه جمله نیست.</p>
+          <button class="btn btn-ghost story-go"><span class="btn-text">ادامه</span></button>
+          <span class="scroll-hint" aria-hidden="true"></span>
+        </article>
+        <article class="story-panel">
+          <p class="story-line">یعنی حتی یه پیام کوچیک از تو می‌تونه روزم رو قشنگ‌تر کنه.</p>
+          <button class="btn btn-ghost story-go"><span class="btn-text">ادامه</span></button>
+        </article>
+        <article class="story-panel">
+          <p class="story-line">یعنی خوشحالیت برام مهمه.</p>
+          <button class="btn btn-ghost story-go"><span class="btn-text">ادامه</span></button>
+        </article>
+        <article class="story-panel">
+          <p class="story-line">یعنی دوست دارم خود واقعی‌ات رو بشناسم؛ با تمام خوبی‌ها، نگرانی‌ها و روزهای معمولی‌ات.</p>
+          <button class="btn btn-ghost story-go"><span class="btn-text">ادامه</span></button>
+        </article>
+        <article class="story-panel">
+          <p class="story-line">یعنی نمی‌خوام فقط امروز با حرف‌هام خوشحالت کنم؛ می‌خوام با رفتارم هم بهت نشون بدم که برام مهمی.</p>
+          <button class="btn btn-primary" id="btn-after-story" data-next><span class="btn-shine" aria-hidden="true"></span><span class="btn-text">یه چیز دیگه هم هست...</span></button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۶: موسیقی ═══════════ -->
+    <section class="scene" id="scene-music" aria-label="موسیقی">
+      <div class="scene-inner">
+        <div class="player-card" id="player-card">
+          <div class="player-head">
+            <div class="disc" id="player-disc" aria-hidden="true">
+              <svg viewBox="0 0 100 100"><path fill="currentColor" d="M50 88 C42 79 14 59 8 39 C3 22 14 9 29 9 C39 9 47 15 50 24 C53 15 61 9 71 9 C86 9 97 22 92 39 C86 59 58 79 50 88 Z"/></svg>
+            </div>
+            <div class="player-titles">
+              <h2>موسیقیِ این لحظه</h2>
+              <p>بیتا، بیا این لحظه رو با یه موسیقی قشنگ‌تر کنیم...</p>
+            </div>
+          </div>
+
+          <canvas id="eq-canvas" aria-hidden="true"></canvas>
+
+          <button class="btn btn-primary" id="btn-play-main">
+            <span class="btn-shine" aria-hidden="true"></span>
+            <span class="btn-text">پخش موسیقی ♫</span>
+          </button>
+
+          <div class="player-controls" id="player-controls">
+            <button class="pc-btn" id="btn-pp" aria-label="پخش یا توقف">
+              <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              <svg class="ic-pause" viewBox="0 0 24 24"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z" fill="currentColor"/></svg>
+            </button>
+
+            <div class="seek-row">
+              <span class="time" id="t-cur">0:00</span>
+              <div class="seek" id="seek" role="slider" aria-label="نوار پخش" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="seek-fill" id="seek-fill"></div>
+                <div class="seek-thumb" id="seek-thumb"></div>
+              </div>
+              <span class="time" id="t-dur">--:--</span>
+            </div>
+
+            <div class="vol-row">
+              <button class="pc-btn small" id="btn-mute" aria-label="بی‌صدا / با‌صدا">
+                <svg class="ic-vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <svg class="ic-mute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9l6 6M22 9l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </button>
+              <input type="range" id="vol" min="0" max="100" value="80" aria-label="حجم صدا">
+            </div>
+          </div>
+
+          <p class="player-error" id="player-error" hidden>
+            فایل موسیقی پیدا نشد یا پخش نشد... ولی بقیه داستان، بدون صدا هم قشنگه ❤
+          </p>
+        </div>
+
+        <button class="btn btn-ghost" data-next><span class="btn-text">ادامه</span></button>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۷: اعتراف ═══════════ -->
+    <section class="scene" id="scene-confess" aria-label="اعتراف">
+      <div class="beams" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <canvas id="confess-canvas" aria-hidden="true"></canvas>
+      <div class="scene-inner confess-inner">
+        <p class="conf-line" id="conf-1">بیتا...</p>
+        <p class="conf-line" id="conf-2">می‌دونی، من نمی‌تونم با یه سایت تمام احساسم رو ثابت کنم.</p>
+        <p class="conf-line" id="conf-3">ولی می‌تونم از همین‌جا شروع کنم؛ با اینکه بهت نشون بدم چقدر برام مهمی.</p>
+        <h2 class="conf-main" id="conf-main">من واقعاً دوستت دارم. <span class="conf-em">❤️</span></h2>
+        <button class="btn btn-primary" id="btn-after-confess" data-next><span class="btn-shine" aria-hidden="true"></span><span class="btn-text">ادامه</span></button>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۸: انتخاب بیتا ═══════════ -->
+    <section class="scene" id="scene-choice" aria-label="انتخاب بیتا">
+      <div class="scene-inner">
+        <div class="choice-ask" id="choice-ask">
+          <p class="choice-l1">حالا نوبت توئه، بیتا...</p>
+          <p class="choice-l2">فکر می‌کنی تونستم یه گوشه از احساسم رو بهت نشون بدم؟</p>
+          <div class="choice-btns">
+            <button class="btn btn-primary" id="btn-yes"><span class="btn-shine" aria-hidden="true"></span><span class="btn-text">آره، فهمیدم ❤️</span></button>
+            <button class="btn btn-ghost" id="btn-notyet"><span class="btn-text">هنوز باید ثابتش کنی 😏</span></button>
+          </div>
+        </div>
+
+        <div class="choice-result" id="result-yes" hidden>
+          <p class="result-text">پس بذار از این به بعد، با رفتارم بیشتر از قبل بهت نشون بدم که چقدر برام عزیزی.</p>
+          <button class="btn btn-primary" id="btn-hug"><span class="btn-shine" aria-hidden="true"></span><span class="btn-text">یه بغل مجازی</span></button>
+          <p class="hug-note" id="hug-note" hidden>بدون فاصله، از ته قلبم. ❤</p>
+          <button class="btn btn-ghost" id="btn-yes-final" hidden><span class="btn-text">برو به پیام آخر</span></button>
+        </div>
+
+        <div class="choice-result" id="result-no" hidden>
+          <p class="result-text">قبوله! عشق رو نمی‌شه فقط با چند خط کد ثابت کرد. بذار توی دنیای واقعی هم نشونت بدم. ❤️</p>
+          <button class="btn btn-primary" id="btn-chance"><span class="btn-shine" aria-hidden="true"></span><span class="btn-text">یه فرصت دیگه بهم بده</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ سکانس ۹: پیام نهایی ═══════════ -->
+    <section class="scene" id="scene-final" aria-label="پیام نهایی">
+      <div class="stars" id="stars" aria-hidden="true"></div>
+      <div class="scene-inner">
+        <div class="final-heart" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><path fill="url(#hg)" d="M50 88 C42 79 14 59 8 39 C3 22 14 9 29 9 C39 9 47 15 50 24 C53 15 61 9 71 9 C86 9 97 22 92 39 C86 59 58 79 50 88 Z"/></svg>
+        </div>
+        <p class="final-line">این سایت شاید پر از نور و انیمیشن باشه...</p>
+        <p class="final-line">اما چیزی که پشتشه، یه احساس واقعیه.</p>
+        <p class="final-line">بیتا، این فقط یه شروعه؛ دوست دارم احساسم رو با رفتارم هم بهت نشون بدم.</p>
+        <p class="final-sign">از طرف محمدرضا، برای بیتا. ❤️</p>
+        <button class="btn btn-ghost" id="btn-restart"><span class="btn-text">از اول تجربه کن</span></button>
+      </div>
+    </section>
+
+  </main>
+
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- کنترل شناور موسیقی -->
+  <button id="mini-player" class="hidden" aria-label="پخش یا توقف موسیقی">
+    <span class="mp-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="mp-label">موسیقی</span>
+  </button>
+
+  <!-- لایت‌باکس -->
+  <div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-label="نمایش بزرگ عکس">
+    <div class="lb-backdrop" id="lb-backdrop"></div>
+    <figure class="lb-fig" id="lb-fig">
+      <img id="lb-img" src="" alt="عکس بزرگ بیتا">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button id="lb-close" aria-label="بستن">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- پرده ترنزیشن -->
+  <div id="veil" aria-hidden="true"><div class="veil-light"></div></div>
+
+  <!-- نشانگر اختصاصی -->
+  <div id="cursor" aria-hidden="true"><span class="c-ring"></span><span class="c-dot"></span></div>
+
+  <audio id="love-audio" src="sed/love.mp3" preload="metadata" playsinline></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
